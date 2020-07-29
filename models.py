@@ -15,7 +15,7 @@ class Pessoas(Base):
     idade = Column(Integer)
 
     def __repr__(self):
-        return '<Pessoas {}>'.format(self.nome)
+        return '<Pessoa {}>'.format(self.nome)
     def save(self):
         db_session.add(self)
         db_session.commit()
@@ -29,7 +29,8 @@ class Atividades(Base):
     id = Column(Integer, primary_key=True)
     nome = Column(String(80))
     pessoa_id = Column(Integer, ForeignKey('pessoas.id'))
-    pessoa = relationship('Pessoas')
+    pessoa = relationship("Pessoas")
+
 
     def __repr__(self):
         return '<Atividades {}>'.format(self.nome)
